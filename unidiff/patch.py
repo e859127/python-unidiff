@@ -278,6 +278,9 @@ class PatchedFile(list):
         target_line_no = hunk.target_start
         expected_source_end = source_line_no + hunk.source_length
         expected_target_end = target_line_no + hunk.target_length
+        if hunk.section_header:
+            expected_source_end -= 1
+            expected_target_end -= 1
         added = 0
         removed = 0
 
